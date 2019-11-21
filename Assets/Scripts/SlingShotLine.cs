@@ -11,7 +11,7 @@ public class SlingShotLine : MonoBehaviour
 
     [SerializeField] private GameObject currentBird;
 
-    private void Start()
+    private void Awake()
     {
         centrePoint = GameObject.Find("CentrePoint").transform;
         lineRendererFront = GameObject.Find("LineRendererFront").GetComponent<LineRenderer>();
