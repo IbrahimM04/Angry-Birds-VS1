@@ -18,7 +18,7 @@ public class bird : MonoBehaviour
     [SerializeField] private GameObject bird2;
     [SerializeField] private GameManager gameManager;
 
-    private void Awake()
+    private void Awake() //Defines all the variables that need Finding in the scene
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         slingShotLine = GameObject.Find("SlingshotBack").GetComponent<SlingShotLine>();
@@ -28,7 +28,7 @@ public class bird : MonoBehaviour
         slingRb = sj.connectedBody;
     }
 
-    private void Start()
+    private void Start() //calculates the delay of the slingshot and freezes the bird in place as to not make it look like a yo-yo
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         releaseDelay = 1 / (sj.frequency * 4);
@@ -44,7 +44,7 @@ public class bird : MonoBehaviour
         }
     }
 
-    private void DragBall()
+    private void DragBall() //Puts the bird on the position of the mouse and keeps it from going beyond the limited range within the game
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distance = Vector2.Distance(mousePosition, slingRb.position);
@@ -60,24 +60,23 @@ public class bird : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    private void OnMouseDown() //Checks if the player is draggin the bird
     {
         rb.constraints = RigidbodyConstraints2D.None;
         isPressed = true;
         rb.isKinematic = true;
     }
 
-    private void OnMouseUp()
+    private void OnMouseUp() //Checks if the player releases the bird
     {
         isPressed = false;
         StartCoroutine(Release());
         rb.isKinematic = false;
     }
 
-    private IEnumerator Release()
+    private IEnumerator Release() //Disables the line renderer and prepares the game manager for another bird to spawn + disables the Spring joint
     {
         yield return new WaitForSeconds(releaseDelay);
-        Debug.Log(releaseDelay);
         sj.enabled = false;
         gameManager.setBool(true);
         slingShotLine.setLineRendererActive(false);

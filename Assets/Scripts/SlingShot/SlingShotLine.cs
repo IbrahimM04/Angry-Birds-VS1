@@ -9,24 +9,22 @@ public class SlingShotLine : MonoBehaviour
 
     [SerializeField] private GameObject currentBird;
 
-    private void Awake()
+    private void Awake() //Defines all the variables that need Finding in the scene
     {
         lineRendererFront = GameObject.Find("LineRendererFront").GetComponent<LineRenderer>();
         lineRendererBack = GameObject.Find("LineRendererBack").GetComponent<LineRenderer>();
     }
 
-    private void Update()
+    private void Update() //Puts the line renderer on the correct positions of the bird and the slingshot
     {
-        //if(currentBird != null)
-        //{
-            lineRendererFront.SetPosition(0, new Vector3(lineRendererFront.transform.position.x, lineRendererFront.transform.position.y, 0f));
-            lineRendererBack.SetPosition(0, new Vector3(lineRendererBack.transform.position.x, lineRendererBack.transform.position.y, 0f));
-            lineRendererFront.SetPosition(1, new Vector3(currentBird.transform.position.x, currentBird.transform.position.y, 0f));
-            lineRendererBack.SetPosition(1, new Vector3(currentBird.transform.position.x, currentBird.transform.position.y, 0f));
-        //}
+        lineRendererFront.SetPosition(0, new Vector3(lineRendererFront.transform.position.x, lineRendererFront.transform.position.y, 0f));
+        lineRendererBack.SetPosition(0, new Vector3(lineRendererBack.transform.position.x, lineRendererBack.transform.position.y, 0f));
+        lineRendererFront.SetPosition(1, new Vector3(currentBird.transform.position.x, currentBird.transform.position.y, 0f));
+        lineRendererBack.SetPosition(1, new Vector3(currentBird.transform.position.x, currentBird.transform.position.y, 0f));
+   
     }
 
-    public void setLineRendererActive(bool active)
+    public void setLineRendererActive(bool active) //sets the liner renderer true of false
     {
         if(active == false)
         {
@@ -40,7 +38,7 @@ public class SlingShotLine : MonoBehaviour
         }
     }
 
-    public void setCurrentBird(GameObject bird)
+    public void setCurrentBird(GameObject bird) //set the bird it has to look at for the line renderer
     {
         currentBird = bird;
     }
