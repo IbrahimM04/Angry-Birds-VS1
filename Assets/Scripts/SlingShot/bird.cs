@@ -20,11 +20,11 @@ public class bird : MonoBehaviour
 
     private void Awake() //Defines all the variables that need Finding in the scene
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        slingShotLine = GameObject.Find("SlingshotBack").GetComponent<SlingShotLine>();
+        gameManager = GameObject.Find(Constants.gameManager).GetComponent<GameManager>();
+        slingShotLine = GameObject.Find(Constants.slingShotBack).GetComponent<SlingShotLine>();
         rb = GetComponent<Rigidbody2D>();
         sj = GetComponent<SpringJoint2D>();
-        sj.connectedBody = GameObject.Find("CentrePoint").GetComponent<Rigidbody2D>();
+        sj.connectedBody = GameObject.Find(Constants.centrePoint).GetComponent<Rigidbody2D>();
         slingRb = sj.connectedBody;
     }
 

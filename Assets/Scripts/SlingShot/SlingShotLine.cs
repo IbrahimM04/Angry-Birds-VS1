@@ -11,8 +11,8 @@ public class SlingShotLine : MonoBehaviour
 
     private void Awake() //Defines all the variables that need Finding in the scene
     {
-        lineRendererFront = GameObject.Find("LineRendererFront").GetComponent<LineRenderer>();
-        lineRendererBack = GameObject.Find("LineRendererBack").GetComponent<LineRenderer>();
+        lineRendererFront = GameObject.Find(Constants.lineRendererFront).GetComponent<LineRenderer>();
+        lineRendererBack = GameObject.Find(Constants.lineRendererBack).GetComponent<LineRenderer>();
     }
 
     private void Update() //Puts the line renderer on the correct positions of the bird and the slingshot

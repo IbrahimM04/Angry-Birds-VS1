@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     private void Awake() //Defines all the variables that need Finding in the scene
     {
         DontDestroyOnLoad(gameObject);
-        slingShotLine = GameObject.Find("SlingshotBack").GetComponent<SlingShotLine>();
-        spawnLocation = GameObject.Find("CentrePoint").GetComponent<Transform>();
+        slingShotLine = GameObject.Find(Constants.slingShotBack).GetComponent<SlingShotLine>();
+        spawnLocation = GameObject.Find(Constants.centrePoint).GetComponent<Transform>();
     }
 
     private void Start() //Spawns bird and set the line renderer on the spawned bird + set's line renderer active
