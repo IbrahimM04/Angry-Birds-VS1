@@ -7,6 +7,8 @@ public class bird : MonoBehaviour
     private SlingShotLine slingShotLine;
     [SerializeField] private bool isPressed;
 
+    [SerializeField] private AudioSource slingSoundEffect;
+
     private float releaseDelay;
     private float maxDragDistance = 2f;
 
@@ -76,6 +78,7 @@ public class bird : MonoBehaviour
 
     private IEnumerator Release() //Disables the line renderer and prepares the game manager for another bird to spawn + disables the Spring joint
     {
+        slingSoundEffect.Play();
         yield return new WaitForSeconds(releaseDelay);
         sj.enabled = false;
         gameManager.setBool(true);
