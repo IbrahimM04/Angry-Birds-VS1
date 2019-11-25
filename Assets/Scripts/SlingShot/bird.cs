@@ -16,24 +16,22 @@ public class bird : MonoBehaviour
 
     [SerializeField] private GameObject bird1;
     [SerializeField] private GameObject bird2;
+    [SerializeField] private GameManager gameManager;
 
     private void Awake()
     {
-        slingShotLine = GameObject.Find("SlingShot").GetComponent<SlingShotLine>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        slingShotLine = GameObject.Find("SlingshotBack").GetComponent<SlingShotLine>();
         rb = GetComponent<Rigidbody2D>();
         sj = GetComponent<SpringJoint2D>();
         sj.connectedBody = GameObject.Find("CentrePoint").GetComponent<Rigidbody2D>();
-
         slingRb = sj.connectedBody;
     }
 
     private void Start()
     {
-        slingShotLine.setCurrentBird(gameObject);
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         releaseDelay = 1 / (sj.frequency * 4);
-
-        slingShotLine.setLineRendererActive(true);
 
         isPressed = false;
     }
@@ -79,8 +77,9 @@ public class bird : MonoBehaviour
     private IEnumerator Release()
     {
         yield return new WaitForSeconds(releaseDelay);
-        slingShotLine.setLineRendererActive(false);
+        Debug.Log(releaseDelay);
         sj.enabled = false;
-        slingShotLine.setBird(bird1);
+        gameManager.setBool(true);
+        slingShotLine.setLineRendererActive(false);
     }
 }
