@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ExplosionForce : MonoBehaviour
 {
-    [SerializeField] private float radius = 5.0F; // zorgt voor radius waar hij objecten aantast
-    [SerializeField] private float power = 10.0F; // zorgt voor explosie power
+    [SerializeField] private float radius = 3.0F; // zorgt voor radius waar hij objecten aantast
+    [SerializeField] private float power = 25.0F; // zorgt voor explosie power
     [SerializeField] private LayerMask obstacleLayer; // layer van obstacels zoals dozen
     [SerializeField] private LayerMask groundLayer; // layer van de vloer
     [SerializeField] private AudioSource explosieAudio; // audio die de explosie af speelt
