@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class ExplosionForce : MonoBehaviour
 {
-    [SerializeField] private float radius = 5.0F; // zorgt voor radius waar hij objecten aantast
-    [SerializeField] private float power = 10.0F; // zorgt voor explosie power
-    [SerializeField] private LayerMask obstacleLayer; // layer van obstacels zoals dozen
-    [SerializeField] private LayerMask groundLayer; // layer van de vloer
-    [SerializeField] private AudioSource explosieAudio; // audio die de explosie af speelt
-    [SerializeField] private AudioClip explosie; // de explosie geluid
-    [SerializeField] private AudioClip explosieTimer; // het aftikkende geluid
-    [SerializeField] private bool canExplode = true; // kijk of hij objecten nog aangetast kunnen worden
-    [SerializeField] private bool playTimer = true; // kijkt of hij klaar is met audio spelen
-    [SerializeField] private bool startTimer = true; // kijkt of hij de audio mag spelen of gelijk moet exploderen
+    [SerializeField] private float radius = 5.0F; 
+    [SerializeField] private float power = 10.0F; 
+    [SerializeField] private LayerMask obstacleLayer; 
+    [SerializeField] private LayerMask groundLayer; 
+    [SerializeField] private AudioSource explosionAudio; 
+    [SerializeField] private AudioClip explosion; 
+    [SerializeField] private AudioClip explosionTimer; 
+    [SerializeField] private bool canExplode = true;
+    [SerializeField] private bool playTimer = true;
+    [SerializeField] private bool startTimer = true; 
     [SerializeField] private ParticleSystem boomParticles;
     Collider2D[] colliders;
     Vector2 explosionPos = new Vector2(0,0);
     Rigidbody2D rb;
     [SerializeField] Rigidbody2D playerRb;
+    [SerializeField] private GameObject other;
 
     private void Start()
     {
@@ -28,48 +29,63 @@ public class ExplosionForce : MonoBehaviour
     void Update() 
     {
         
-        Vector3 explosionPos = transform.position;  // zorgt er voor dat hij weet van waar hij de explosie moet schieten
-        colliders = Physics2D.OverlapCircleAll(explosionPos, radius, obstacleLayer); // maakt een circel om de vogel heen van welke objecten force moeten krijgen
+        Vector3 explosionPos = transform.position;
+        colliders = Physics2D.OverlapCircleAll(explosionPos, radius, obstacleLayer);
         
         
-            if (Input.GetKeyDown("space")&&canExplode == true) // als je op spatie klikt zet hij de playtimer op false zodat hij meteen explodeert
+            if (Input.GetKeyDown("space")&&canExplode == true)
             {
             playTimer = false;
             StartCoroutine(ExplosionTimer());
             }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) // als hij iets raakt staat de playtimer nog steeds op true zodat hij gaat wachten tot de audio klaar is en explodeert dan
+    private void OnCollisionEnter2D(Collision2D collision) 
     {
 
         if (collision.gameObject.layer == 8 && startTimer == true || collision.gameObject.layer == 9 && startTimer == true)
         {
 
             StartCoroutine(ExplosionTimer());
+            //collision.gameObject.GetComponent<Collider2D>().enabled = false;
 
         }
     }
 
-    private IEnumerator ExplosionTimer() // hier vind het kijken of hij mag exploderen plaats
+
+
+   /* 
+    void OnTriggerStay2D(BoxCollider2D col)
+    {
+        if (col.gameObject.tag == "Destroyable")
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
+    }
+    */
+
+    private IEnumerator ExplosionTimer()
     {
 
-        if (playTimer == true) // als playtimer true is gaat hij audio spelen en explodeert daar na
+        if (playTimer == true) 
         {
-            startTimer = false; // als startTimer false is kan hij niet meer de IEnum kan aan roepen om iets te laten exploderen
-            explosieAudio.clip = explosieTimer;
-            explosieAudio.Play();
-            yield return new WaitForSeconds(explosieAudio.clip.length);
+            startTimer = false;
+            explosionAudio.clip = explosionTimer;
+            explosionAudio.Play();
+            yield return new WaitForSeconds(explosionAudio.clip.length);
             playTimer = false;
+            
 
         }
         else
         {
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(2);
+            Destroy(this.gameObject);
         }
         
 
 
-        foreach (Collider2D hit in colliders) // hier zorgt hij er voor dat hij een force aan alle objecten geeft die in de overlap shere zitten
+        foreach (Collider2D hit in colliders) 
         {
             rb = hit.GetComponent<Rigidbody2D>();
             AddExplosionForce(rb, power, transform.position, radius);
@@ -83,10 +99,10 @@ public class ExplosionForce : MonoBehaviour
 
         if (canExplode == true)
         {
-            explosieAudio.clip = explosie;
+            explosionAudio.clip = explosion;
             Vector2 explodingDirection = rb.position - explodingPosition;
             float explodingDistance = explodingDirection.magnitude;
-            explosieAudio.Play();
+            explosionAudio.Play();
             if (upwardsModifier == 0)
             {
                 explodingDirection /= explodingDistance;
