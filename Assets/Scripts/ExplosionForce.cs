@@ -19,10 +19,13 @@ public class ExplosionForce : MonoBehaviour
     Vector2 explosionPos = new Vector2(0, 0);
     Rigidbody2D rb;
     [SerializeField] Rigidbody2D playerRb;
+    
+       
 
     private void Start()
     {
         playerRb.AddForce(new Vector2(300 * playerRb.mass, 45 * playerRb.mass));
+        
     }
 
     void Update()
@@ -76,6 +79,7 @@ public class ExplosionForce : MonoBehaviour
         }
         canExplode = false;
         boomParticles.Play();
+       
     }
 
     void AddExplosionForce(Rigidbody2D rb, float explosionForce, Vector2 explodingPosition, float radius, float upwardsModifier = 0.0f, ForceMode2D mode = ForceMode2D.Impulse)
