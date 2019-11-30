@@ -15,17 +15,16 @@ public class CameraMovement : MonoBehaviour
         while (transform.position.x < 10)
         {
             yield return new WaitForSeconds(0.01f);
-            //transform.position += transform.position + new Vector3(100, 100);
             transform.position += new Vector3(0.1f, 0);
         }
     }
 
     public IEnumerator moveCameraBack()
     {
+        yield return new WaitForSeconds(1); 
         while (transform.position.x > 0)
         {
             yield return new WaitForSeconds(0.01f);
-            //transform.position += transform.position + new Vector3(100, 100);
             transform.position -= new Vector3(0.1f, 0);
         }
     }

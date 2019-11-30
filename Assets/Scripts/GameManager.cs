@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private Transform spawnLocation;
+    private CameraMovement cameraMovement;
     private SlingShotLine slingShotLine;
     [SerializeField] private GameObject birdPrefab;
 
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     private void Awake() //Defines all the variables that need Finding in the scene
     {
         DontDestroyOnLoad(gameObject);
+        cameraMovement = GameObject.Find(Constants.cameraMovement).GetComponent<CameraMovement>();
         slingShotLine = GameObject.Find(Constants.slingShotBack).GetComponent<SlingShotLine>();
         spawnLocation = GameObject.Find(Constants.centrePoint).GetComponent<Transform>();
     }
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public void setBool(bool set) //Hier komt de bool binnen om een nieuwe spawn the accepteren
     {
+        StartCoroutine(cameraMovement.moveCamera());
         spawn = set;
         timer = 0;
     }
