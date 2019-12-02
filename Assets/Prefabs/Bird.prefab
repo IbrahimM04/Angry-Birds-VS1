@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 587393505439483164}
   - component: {fileID: 587393505439483171}
   - component: {fileID: 587393505439483170}
+  - component: {fileID: 4748386352933619077}
   - component: {fileID: 587393505439483168}
   - component: {fileID: 587393505439483169}
-  - component: {fileID: 4748386352933619077}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -125,88 +125,6 @@ MonoBehaviour:
   bird1: {fileID: 5797895514125956113, guid: 733fd4711b9e3d34eab1a3f060a9c2ad, type: 3}
   bird2: {fileID: 5797895514125956113, guid: 733fd4711b9e3d34eab1a3f060a9c2ad, type: 3}
   gameManager: {fileID: 0}
---- !u!231 &587393505439483168
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587393505439483167}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 1.3367243
-  m_DampingRatio: 0
-  m_Frequency: 1.5
---- !u!60 &587393505439483169
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587393505439483167}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.91, y: 2.14}
-    newSize: {x: 1.91, y: 2.14}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.85499996, y: -0.71}
-      - {x: 0.945, y: -0.5}
-      - {x: 0.955, y: -0.44}
-      - {x: 0.955, y: 0.12}
-      - {x: 0.895, y: 0.28}
-      - {x: 0.765, y: 0.5}
-      - {x: 0.905, y: 0.57}
-      - {x: 0.945, y: 0.65}
-      - {x: 0.84499997, y: 0.72999996}
-      - {x: 0.745, y: 0.72999996}
-      - {x: 0.575, y: 0.64}
-      - {x: 0.235, y: 0.79999995}
-      - {x: 0.035, y: 0.96}
-      - {x: -0.13499999, y: 1.05}
-      - {x: -0.225, y: 1.0699999}
-      - {x: -0.45499998, y: 1.0699999}
-      - {x: -0.49499997, y: 1.02}
-      - {x: -0.48499998, y: 0.84999996}
-      - {x: -0.475, y: 0.82}
-      - {x: -0.405, y: 0.68}
-      - {x: -0.565, y: 0.72999996}
-      - {x: -0.685, y: 0.63}
-      - {x: -0.675, y: 0.53}
-      - {x: -0.79499996, y: 0.39}
-      - {x: -0.895, y: 0.22999999}
-      - {x: -0.935, y: 0.12}
-      - {x: -0.955, y: 0.01}
-      - {x: -0.955, y: -0.45}
-      - {x: -0.92499995, y: -0.56}
-      - {x: -0.815, y: -0.75}
-      - {x: -0.645, y: -0.91999996}
-      - {x: -0.355, y: -1.06}
-      - {x: -0.255, y: -1.0699999}
-      - {x: 0.295, y: -1.0699999}
-      - {x: 0.39499998, y: -1.05}
-      - {x: 0.565, y: -0.98999995}
-      - {x: 0.765, y: -0.83}
 --- !u!82 &4748386352933619077
 AudioSource:
   m_ObjectHideFlags: 0
@@ -303,3 +221,85 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!231 &587393505439483168
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587393505439483167}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 1.3367243
+  m_DampingRatio: 0
+  m_Frequency: 1.5
+--- !u!60 &587393505439483169
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587393505439483167}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.91, y: 2.14}
+    newSize: {x: 1.91, y: 2.14}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.85499996, y: -0.71}
+      - {x: 0.945, y: -0.5}
+      - {x: 0.955, y: -0.44}
+      - {x: 0.955, y: 0.12}
+      - {x: 0.895, y: 0.28}
+      - {x: 0.765, y: 0.5}
+      - {x: 0.905, y: 0.57}
+      - {x: 0.945, y: 0.65}
+      - {x: 0.84499997, y: 0.72999996}
+      - {x: 0.745, y: 0.72999996}
+      - {x: 0.575, y: 0.64}
+      - {x: 0.235, y: 0.79999995}
+      - {x: 0.035, y: 0.96}
+      - {x: -0.13499999, y: 1.05}
+      - {x: -0.225, y: 1.0699999}
+      - {x: -0.45499998, y: 1.0699999}
+      - {x: -0.49499997, y: 1.02}
+      - {x: -0.48499998, y: 0.84999996}
+      - {x: -0.475, y: 0.82}
+      - {x: -0.405, y: 0.68}
+      - {x: -0.565, y: 0.72999996}
+      - {x: -0.685, y: 0.63}
+      - {x: -0.675, y: 0.53}
+      - {x: -0.79499996, y: 0.39}
+      - {x: -0.895, y: 0.22999999}
+      - {x: -0.935, y: 0.12}
+      - {x: -0.955, y: 0.01}
+      - {x: -0.955, y: -0.45}
+      - {x: -0.92499995, y: -0.56}
+      - {x: -0.815, y: -0.75}
+      - {x: -0.645, y: -0.91999996}
+      - {x: -0.355, y: -1.06}
+      - {x: -0.255, y: -1.0699999}
+      - {x: 0.295, y: -1.0699999}
+      - {x: 0.39499998, y: -1.05}
+      - {x: 0.565, y: -0.98999995}
+      - {x: 0.765, y: -0.83}

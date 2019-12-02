@@ -69,17 +69,10 @@ public class ExplosionForce : MonoBehaviour
         {
             yield return new WaitForSeconds(0);
         }
-
-
-
+            
         foreach (Collider2D hit in colliders) // hier zorgt hij er voor dat hij een force aan alle objecten geeft die in de overlap shere zitten
         {
             rb = hit.GetComponent<Rigidbody2D>();
-
-            if(hit.Distance <= 5)
-            {
-                
-            }
             AddExplosionForce(rb, power, transform.position, radius);
         }
         canExplode = false;
@@ -95,6 +88,7 @@ public class ExplosionForce : MonoBehaviour
             explosieAudio.clip = explosie;
             Vector2 explodingDirection = rb.position - explodingPosition;
             float explodingDistance = explodingDirection.magnitude;
+            Debug.Log(explodingDistance);
             explosieAudio.Play();
             if (upwardsModifier == 0)
             {
