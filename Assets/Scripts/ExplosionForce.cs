@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,8 +19,6 @@ public class ExplosionForce : MonoBehaviour
     Vector2 explosionPos = new Vector2(0, 0);
     Rigidbody2D rb;
     [SerializeField] Rigidbody2D playerRb;
-    
-       
 
     private void Start()
     {
@@ -63,14 +61,11 @@ public class ExplosionForce : MonoBehaviour
             explosieAudio.Play();
             yield return new WaitForSeconds(explosieAudio.clip.length);
             playTimer = false;
-
         }
         else
         {
             yield return new WaitForSeconds(0);
         }
-
-
 
         foreach (Collider2D hit in colliders) // hier zorgt hij er voor dat hij een force aan alle objecten geeft die in de overlap shere zitten
         {
@@ -84,23 +79,51 @@ public class ExplosionForce : MonoBehaviour
 
     void AddExplosionForce(Rigidbody2D rb, float explosionForce, Vector2 explodingPosition, float radius, float upwardsModifier = 0.0f, ForceMode2D mode = ForceMode2D.Impulse)
     {
-
+        BlockHealth blockhealth = rb.GetComponent<BlockHealth>();
         if (canExplode == true)
         {
+           
             explosieAudio.clip = explosie;
             Vector2 explodingDirection = rb.position - explodingPosition;
             float explodingDistance = explodingDirection.magnitude;
-            explosieAudio.Play();
-            if (upwardsModifier == 0)
+            Debug.Log(explodingDistance);
+            //maxvalue of 3
+            if(explodingDistance < radius / 4)
             {
-                explodingDirection /= explodingDistance;
-
+                Debug.Log("Isnta k-k-k-k-k-k-k-kill!!!!!!!!!!!!!!!!!!!!!!!!11!!11!!!!!!1");
+                blockhealth.setHealth(4);
             }
             else
             {
-                explodingDirection.Normalize();
+                if (explodingDistance > radius / 4 && explodingDistance < (radius / 4) * 2)
+                {
+                    Debug.Log("Kinda close");
+                    blockhealth.setHealth(3);
+                }
+                if (explodingDistance > (radius / 4) * 2 && explodingDistance < (radius / 4) * 3)
+                {
+                    Debug.Log("slightly less far Way");
+                    blockhealth.setHealth(2);
+                }
+                if (explodingDistance > (radius / 4) * 3 && explodingDistance < radius)
+                {
+                    Debug.Log("Really far Way");
+                    blockhealth.setHealth(1);
+                }
+                
+                explosieAudio.Play();
+                if (upwardsModifier == 0)
+                {
+                    explodingDirection /= explodingDistance;
+
+                }
+                else
+                {
+                    explodingDirection.Normalize();
+                }
+                rb.AddForce(Mathf.Lerp(0, explosionForce, (radius / explodingDistance)) * explodingDirection, mode);
             }
-            rb.AddForce(Mathf.Lerp(0, explosionForce, (radius / explodingDistance)) * explodingDirection, mode);
+           
         }
 
     }

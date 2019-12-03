@@ -1,20 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockHealth : MonoBehaviour
 {
     [SerializeField]private Color color;
-    [SerializeField]internal int currentHealth;
-    // Start is called before the first frame update
+    [SerializeField]private int currentHealth;
+
     void Start()
     {
-        
+        currentHealth = 4;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setHealth(int damage)
     {
+        currentHealth -= damage;
 
         if (currentHealth == 4)
         {
