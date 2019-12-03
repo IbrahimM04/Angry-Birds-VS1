@@ -1858,7 +1858,6 @@ GameObject:
   - component: {fileID: 5276663953027966385}
   - component: {fileID: 5276663953027966386}
   - component: {fileID: 5276663953027966391}
-  - component: {fileID: 5276663953027966388}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1866,19 +1865,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5276663953027966388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5276663953027966387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7aaf83b88a22c742a89f68d13fe0bc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountOfBlocks: 0
 --- !u!114 &5276663953027966391
 MonoBehaviour:
   m_ObjectHideFlags: 0
